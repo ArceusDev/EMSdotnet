@@ -23,4 +23,8 @@
 	  <Folder Include="Repositories\Contracts\" />
 	  <Folder Include="Repositories\Implementations\" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\BaseLib\BaseLib.csproj" />
+	</ItemGroup>
 </Project>
