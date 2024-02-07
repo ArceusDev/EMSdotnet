@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using ServerLib.Data;
+using ServerLib.Helpers;
+using ServerLib.Repositories.Contracts;
+using ServerLib.Repositories.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         throw new InvalidOperationException("Database Connection not found"));
 });
 
+builder.Services.Configure<JwtSection>(builder.Configuration.GetSection("JwtSection"));
+builder.Services.AddScoped<IUserAccount, UserAccountRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
